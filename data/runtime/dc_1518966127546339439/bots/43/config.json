@@ -1,0 +1,19 @@
+{
+    "ownerId": "1518966127546339439",
+    "owner_id": "1518966127546339439",
+    "channelId": 1545686329915080700,
+    "token": "MTUyMDA0MjA2MDc4MTA2NDIxMg.G-SM1A.vVQolskpEt_hZCew9FFmSZKBhsHU-C7Jg1n7iw",
+    "owners": [
+        "1518966127546339439"
+    ],
+    "tokens": {
+        "bot_token": "MTUyMDA0MjA2MDc4MTA2NDIxMg.G-SM1A.vVQolskpEt_hZCew9FFmSZKBhsHU-C7Jg1n7iw"
+    },
+    "discord": {
+        "accounts_channel": 1545686329915080700,
+        "owner_id": "1518966127546339439"
+    },
+    "autosecure": {
+        "replace_main_alias": true
+    }
+}

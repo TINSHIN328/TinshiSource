@@ -1,0 +1,12 @@
+{
+    "owners": [],
+    "tokens": {
+        "bot_token": ""
+    },
+    "discord": {
+        "accounts_channel": ""
+    },
+    "autosecure": {
+        "replace_main_alias": true
+    }
+}

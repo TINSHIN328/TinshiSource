@@ -1,0 +1,7 @@
+TINSHI PAID + ADD BOT + RAILWAY MYSQL
+
+Local: put DATABASE_URL=mysql://... in .env, then npm install && npm start.
+Railway: Web Service -> Variables -> DATABASE_URL -> use Railway MySQL variable, then redeploy.
+The database creates tinshi_users, tinshi_payments and tinshi_bots tables automatically.
+Paid Add Bot is server-side gated: users without an approved payment receive 402 PLAN_REQUIRED.
+Do not put Discord bot tokens or database passwords into source files.
